@@ -7,14 +7,16 @@
 
 class Membership{
 public:
-    Membership(Range range);
+    Membership(Range range = Range());
 
     void addPoint(Point point);
+    int32_t getValue(int32_t x);
     void print();
 
     std::list<Point> getPointList();
 private:
-    Range* range;
+    Range range;
+    Range value_range;
 
     std::list<Point> points_list;
 };

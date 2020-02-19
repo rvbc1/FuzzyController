@@ -26,3 +26,25 @@ uint8_t Range::isInRange(int32_t value){
         return true;
     return false;
 }
+
+int32_t Range::getValueInRange(int32_t value){
+    if(!isInRange(value)){
+        if(value > getMax())
+            return getMax();
+        else
+            return getMin();
+    }
+    return value;
+}
+
+int32_t Range::getWidth(){
+    return max - min;
+}
+
+float Range::getPartOfRange(int32_t value){
+    return static_cast<float>(value - min) / getWidth();
+}
+
+int32_t Range::getValueForPart(float part){
+    return min + round(getWidth()*part);
+}

@@ -2,6 +2,7 @@
 #define RANGE_H
 
 #include <cstdint>
+#include <math.h>
 
 class Range{
 public:
@@ -13,6 +14,10 @@ public:
     void setMax(int32_t max);
 
     uint8_t isInRange(int32_t value);
+    int32_t getValueInRange(int32_t value);
+    int32_t getWidth();
+    float getPartOfRange(int32_t value);
+    int32_t getValueForPart(float part);
 private:
     int32_t min, max;
 };

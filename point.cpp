@@ -25,10 +25,14 @@ void Point::setY(int32_t y){
 
 void Point::setRangeX(Range x_range){
     this->x_range = x_range;
+
+    x = x_range.getValueInRange(x);
 }
 
 void Point::setRangeY(Range y_range){
     this->y_range = y_range;
+
+    y = y_range.getValueInRange(y);
 }
 
 

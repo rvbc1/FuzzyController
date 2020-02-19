@@ -8,10 +8,12 @@ SOURCES += \
         main.cpp \
         membership.cpp \
         point.cpp \
-        range.cpp
+        range.cpp \
+        rule.cpp
 
 HEADERS += \
     fuzzycontroler.h \
     membership.h \
     point.h \
-    range.h
+    range.h \
+    rule.h
