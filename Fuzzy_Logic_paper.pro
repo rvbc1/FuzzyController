@@ -4,7 +4,7 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-        fuzzycontroler.cpp \
+        fuzzycontroller.cpp \
         main.cpp \
         membership.cpp \
         point.cpp \
@@ -12,7 +12,7 @@ SOURCES += \
         rule.cpp
 
 HEADERS += \
-    fuzzycontroler.h \
+    fuzzycontroller.h \
     membership.h \
     point.h \
     range.h \

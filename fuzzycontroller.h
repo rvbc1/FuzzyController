@@ -3,9 +3,9 @@
 
 #include <rule.h>
 
-class FuzzyControler{
+class FuzzyController{
 public:
-    FuzzyControler();
+    FuzzyController();
     void addRule(Rule rule);
     float getOut();
 private:

@@ -1,13 +1,13 @@
 #include <iostream>
 
-#include "fuzzycontroler.h"
+#include "fuzzycontroller.h"
 #include <membership.h>
 #include <rule.h>
 
 using namespace std;
 
 int main(){
-    FuzzyControler* fuzzy_controler = new FuzzyControler();
+    FuzzyController* fuzzy_controler = new FuzzyController();
     Range x_data_range(-100, 100);
     Membership *low = new Membership(x_data_range); // default y range is pro mille - (0, 1000)
     low->addPoint(*new Point(-100,100)); //point out of range is moved to range edge
