@@ -9,6 +9,7 @@ public:
     Rule();
     void addInput(int32_t &value, Membership &membership);
     void addOutput(int32_t &value, Membership &membership);
+    void addOutput(Membership &membership);
 
     int32_t calculate_input();
     int32_t getOutValue();

@@ -13,6 +13,11 @@ void Rule::addOutput(int32_t &value, Membership &membership){
     output = new Output(value, membership);
 }
 
+void Rule::addOutput(Membership &membership){
+    int32_t value = 0;
+    output = new Output(value, membership);
+}
+
 int32_t Rule::calculate_input(){
     int32_t min = INT32_MAX;
     for (std::list<Input>::iterator it=inputs_list.begin(); it != inputs_list.end(); ++it){

@@ -9,16 +9,19 @@ class Membership{
 public:
     Membership(Range x_range = Range(), Range y_range = Range(0, 1000));
 
-    void addPoint(Point point);
+ //   void addPoint(Point point);
+    void addPoint(Point &point);
     int32_t getValue(int32_t x);
     void print();
 
-    std::list<Point> getPointList();
+    std::list<Point *> getPointList();
 private:
+    void addPointToList(Point &point);
+
     Range range;
     Range value_range;
 
-    std::list<Point> points_list;
+    std::list<Point *> points_list;
 };
 
 #endif // MEMBERSHIP_H

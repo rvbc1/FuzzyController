@@ -31,7 +31,7 @@ float FuzzyControler::getOut(){
 uint8_t FuzzyControler::isObjectUnique(std::list<RuleOutput> &unique_list, Rule object){
     for (std::list<RuleOutput>::iterator it=unique_list.begin(); it != unique_list.end(); ++it){
         if(it->out_membership == object.getOutMembership()){
-            it->input_membership_value = std::max(it->input_membership_value, object.calculate_input());
+            it->input_membership_value = std::max(it->input_membership_value, object.calculate_input()); //updateing max input;
             return false;
         }
     }

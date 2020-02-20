@@ -8,86 +8,93 @@ using namespace std;
 
 int main(){
     FuzzyControler* fuzzy_controler = new FuzzyControler();
-    Membership *low = new Membership(Range(0, 150));
-    low->addPoint(Point(30,100));
-    low->addPoint(Point(50,0));
+    Range x_data_range(-100, 100);
+    Membership *low = new Membership(x_data_range); // default y range is pro mille - (0, 1000)
+    low->addPoint(*new Point(-100,100)); //point out of range is moved to range edge
+    Point last_point (-20, 0);
+    low->addPoint(last_point); // added point can be changed but cannont change order (fisrt point should be always first etc)
+    // point list is sorted only at creating, order mishmash will destroy linear interpolation
 
-    Membership *mid = new Membership(Range(0, 150));
-    mid->addPoint(Point(30,0));
-    mid->addPoint(Point(50,100));
-    mid->addPoint(Point(100,100));
-    mid->addPoint(Point(120,0));
+    Membership *mid = new Membership(x_data_range);
+    mid->addPoint(*new Point(-60,0));
+    mid->addPoint(*new Point(-20,100));
+    mid->addPoint(*new Point(20,100));
+    mid->addPoint(*new Point(60,0));
 
-    Membership *high = new Membership(Range(0, 150));
-    high->addPoint(Point(100,0));
-    high->addPoint(Point(120,100));
+    Membership *high = new Membership(x_data_range);
+    high->addPoint(*new Point(20,0));
+    high->addPoint(*new Point(100,100));
 
-    Membership *out_n = new Membership(Range(0, 150), Range(-10, 10));
-    out_n->addPoint(Point(0, -10));
-    Membership *out_z = new Membership(Range(0, 150), Range(-10, 10));
-    out_z->addPoint(Point(0, 0));
-    Membership *out_p = new Membership(Range(0, 150), Range(-10, 10));
-    out_p->addPoint(Point(0, 10));
 
-    //m->print();
+    Range y_data_out_range(-45,45);
+    Membership *out_left_strong = new Membership(x_data_range, y_data_out_range);
+    out_left_strong->addPoint(*new Point(0, -45)); //Out Membership sholud be singleton (only one point), It doesn't matter what value has x
+    Membership *out_left = new Membership(x_data_range, y_data_out_range);
+    out_left->addPoint(*new Point(0, -25));
+    Membership *out_center = new Membership(x_data_range, y_data_out_range);
+    out_center->addPoint(*new Point(0, 0));
+    Membership *out_right = new Membership(x_data_range, y_data_out_range);
+    out_right->addPoint(*new Point(0, 25));
+    Membership *out_right_strong = new Membership(x_data_range, y_data_out_range);
+    out_right_strong->addPoint(*new Point(0, 45));
 
-    //cout << (int)m->getValue(49);
-
-//    for(int i = 0; i < 150; i+=4){
-//        cout << (int)low->getValue(i) << "\t";
-//    }
-
-//    cout << endl;
-
-//    for(int i = 0; i < 150; i+=4){
-//        cout << (int)mid->getValue(i) << "\t";
-//    }
-
-//    cout << endl;
-
-//    for(int i = 0; i < 150; i+=4){
-//        cout << (int)high->getValue(i) << "\t";
-//    }
-
-//    cout << endl;
 
     int32_t in1, in2;
-    in1 = 36;
-    in2 = 36;
-    int32_t o1 = 0;
+    in1 = 0;
+    in2 = 0;
 
     Rule *r1 = new Rule();
     r1->addInput(in1, *low);
     r1->addInput(in2, *mid);
-    r1->addOutput(o1, *out_z);
+    r1->addOutput(*out_right);
 
     Rule *r2 = new Rule();
     r2->addInput(in1, *low);
     r2->addInput(in2, *low);
-    r2->addOutput(o1, *out_z);
+    r2->addOutput(*out_right_strong);
 
     Rule *r3 = new Rule();
     r3->addInput(in1, *mid);
     r3->addInput(in2, *mid);
-    r3->addOutput(o1, *out_z);
+    r3->addOutput(*out_center);
 
     Rule *r4 = new Rule();
     r4->addInput(in1, *mid);
     r4->addInput(in2, *low);
-    r4->addOutput(o1, *out_p);
+    r4->addOutput(*out_right);
+
+
+    Rule *r5 = new Rule();
+    r5->addInput(in1, *mid);
+    r5->addInput(in2, *high);
+    r5->addOutput(*out_left);
+
+    Rule *r6 = new Rule();
+    r6->addInput(in1, *high);
+    r6->addInput(in2, *mid);
+    r6->addOutput(*out_left);
+
+    Rule *r7 = new Rule();
+    r7->addInput(in1, *high);
+    r7->addInput(in2, *high);
+    r7->addOutput(*out_left_strong);
 
 
     fuzzy_controler->addRule(*r1);
     fuzzy_controler->addRule(*r2);
     fuzzy_controler->addRule(*r3);
     fuzzy_controler->addRule(*r4);
+    fuzzy_controler->addRule(*r5);
+    fuzzy_controler->addRule(*r6);
+    fuzzy_controler->addRule(*r7);
 
+    in1 = -50;
+    in2 = -45;
 
     cout <<  fuzzy_controler->getOut() << endl;
-    in1 = 40;
-    in2 = 45;
+    in1 = 70;
+    in2 = 55;
     cout <<  fuzzy_controler->getOut() << endl;
 
-    Range r(50, 70);
     return 0;
 }
