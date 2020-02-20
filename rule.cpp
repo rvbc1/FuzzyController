@@ -25,6 +25,10 @@ int32_t Rule::getOutValue(){
     return output->membership->getValue(*output->value);
 }
 
+Membership *Rule::getOutMembership(){
+return output->membership;
+}
+
 Rule::Input::Input(int32_t &value, Membership &membership){
     this->value = &value;
     this->membership = &membership;

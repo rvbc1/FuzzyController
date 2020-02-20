@@ -12,6 +12,7 @@ public:
 
     int32_t calculate_input();
     int32_t getOutValue();
+    Membership *getOutMembership();
 private:
     struct Input {
         Membership* membership;

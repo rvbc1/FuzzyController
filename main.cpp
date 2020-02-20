@@ -34,7 +34,7 @@ int main(){
     //cout << (int)m->getValue(49);
 
     for(int i = 0; i < 150; i+=4){
-         cout << (int)low->getValue(i) << "\t";
+        cout << (int)low->getValue(i) << "\t";
     }
 
     cout << endl;
@@ -60,13 +60,33 @@ int main(){
     r1->addInput(in1, *low);
     r1->addInput(in2, *mid);
     r1->addOutput(o1, *out_z);
+
+    Rule *r2 = new Rule();
+    r2->addInput(in1, *low);
+    r2->addInput(in2, *low);
+    r2->addOutput(o1, *out_z);
+
+    Rule *r3 = new Rule();
+    r3->addInput(in1, *mid);
+    r3->addInput(in2, *mid);
+    r3->addOutput(o1, *out_z);
+
+    Rule *r4 = new Rule();
+    r4->addInput(in1, *mid);
+    r4->addInput(in2, *low);
+    r4->addOutput(o1, *out_p);
+
+
     fuzzy_controler->addRule(*r1);
+    fuzzy_controler->addRule(*r2);
+    fuzzy_controler->addRule(*r3);
+    fuzzy_controler->addRule(*r4);
 
 
-    cout << (int) fuzzy_controler->getOut() << endl;
+    cout <<  fuzzy_controler->getOut() << endl;
     in1 = 40;
-    in2 = 40;
-    cout << (int) fuzzy_controler->getOut() << endl;
+    in2 = 45;
+    cout <<  fuzzy_controler->getOut() << endl;
 
     Range r(50, 70);
     return 0;
