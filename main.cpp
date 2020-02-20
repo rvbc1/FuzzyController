@@ -22,34 +22,34 @@ int main(){
     high->addPoint(Point(100,0));
     high->addPoint(Point(120,100));
 
-    Membership *out_n = new Membership(Range(0, 150));
-    out_n->addPoint(Point(0, 0));
-    Membership *out_z = new Membership(Range(0, 150));
-    out_z->addPoint(Point(0, 1));
-    Membership *out_p = new Membership(Range(0, 150));
-    out_p->addPoint(Point(0, 2));
+    Membership *out_n = new Membership(Range(0, 150), Range(-10, 10));
+    out_n->addPoint(Point(0, -10));
+    Membership *out_z = new Membership(Range(0, 150), Range(-10, 10));
+    out_z->addPoint(Point(0, 0));
+    Membership *out_p = new Membership(Range(0, 150), Range(-10, 10));
+    out_p->addPoint(Point(0, 10));
 
     //m->print();
 
     //cout << (int)m->getValue(49);
 
-    for(int i = 0; i < 150; i+=4){
-        cout << (int)low->getValue(i) << "\t";
-    }
+//    for(int i = 0; i < 150; i+=4){
+//        cout << (int)low->getValue(i) << "\t";
+//    }
 
-    cout << endl;
+//    cout << endl;
 
-    for(int i = 0; i < 150; i+=4){
-        cout << (int)mid->getValue(i) << "\t";
-    }
+//    for(int i = 0; i < 150; i+=4){
+//        cout << (int)mid->getValue(i) << "\t";
+//    }
 
-    cout << endl;
+//    cout << endl;
 
-    for(int i = 0; i < 150; i+=4){
-        cout << (int)high->getValue(i) << "\t";
-    }
+//    for(int i = 0; i < 150; i+=4){
+//        cout << (int)high->getValue(i) << "\t";
+//    }
 
-    cout << endl;
+//    cout << endl;
 
     int32_t in1, in2;
     in1 = 36;

@@ -7,7 +7,7 @@
 
 class Membership{
 public:
-    Membership(Range range = Range());
+    Membership(Range x_range = Range(), Range y_range = Range(0, 1000));
 
     void addPoint(Point point);
     int32_t getValue(int32_t x);

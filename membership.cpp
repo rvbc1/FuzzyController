@@ -4,9 +4,9 @@
 #include <iterator>
 
 
-Membership::Membership(Range range){
-    this->range = range;
-    value_range = Range(0, 1000);
+Membership::Membership(Range x_range, Range y_range){
+    this->range = x_range;
+    value_range = y_range;
 }
 
 void Membership::addPoint(Point point){
